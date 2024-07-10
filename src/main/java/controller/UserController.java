@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import entity.UserEntity;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.DefaultValue;
@@ -19,7 +20,6 @@ import jakarta.ws.rs.core.Response;
 import service.UserService;
 
 @Path("/users")
-// Define JSON to REST api
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserController {
@@ -47,7 +47,7 @@ public class UserController {
 
     @POST
     @Transactional 
-    public Response create(UserEntity userEntity) {
+    public Response create(@Valid UserEntity userEntity) {
         return Response.ok(userService.createUser(userEntity)).build();
     }
 
