@@ -45,4 +45,7 @@ public class UserEntity extends PanacheEntity {
         SENAI
     }
 
+    public static UserEntity findByCpf(String document) {
+        return find("document", document).firstResult();
+    }
 }
